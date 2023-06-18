@@ -1,6 +1,8 @@
 html, body {
     height: 100%;
     font-size: xx-large;
+    background-color: #2B2B2B;
+    color: white;
 }
 
 .parent {
@@ -14,42 +16,34 @@ html, body {
 
 .div1 {
     grid-area: 1 / 1 / 8 / 5;
-    background-color: deepskyblue;
     position: relative;
 }
 
 .div2 {
     grid-area: 8 / 1 / 24 / 5;
-    background-color: #fc9b9b;
 }
 
 .div3 {
     grid-area: 24 / 1 / 37 / 5;
-    background-color: #864186;
 }
 
 .div4 {
     grid-area: 1 / 5 / 5 / 38;
-    background-color: #affcaf;
 }
 
 .div5 {
     grid-area: 5 / 5 / 37 / 38;
-    background-color: #dca7ff;
 }
 
 .div6 {
     grid-area: 1 / 38 / 19 / 42;
-    background-color: #f1f189;
 }
 
 .div7 {
     grid-area: 21 / 38 / 37 / 42;
-    background-color: #af5353;
 }
 .div8{
     grid-area: 19 / 38 / 21 / 42;
-    background-color: gray;
 }
 
 
@@ -67,7 +61,9 @@ html, body {
     top:0;
     right:0;
 }
-#name{
+#nameContainer{
     position:relative;
     top:80%;
+    background-color: gray;
+    color: white;
 }
