@@ -7,6 +7,7 @@ class Enemy extends Entity {
         this._coinsDropped = coinsDropped;
         this._expDropped = expDropped;
         this._items = items;
+        this.save = hp
     }
 
     getcoinsDropped() {
@@ -32,4 +33,10 @@ class Enemy extends Entity {
     setitems(value) {
         this._items = value;
     }
+    reset(){
+        this._hp = this.save
+    }
 }
+
+
+export {Enemy}

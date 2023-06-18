@@ -45,5 +45,9 @@ class Entity {
         let damage = c * attack / (c + this._defence);
         this.sethp(Math.round(this.gethp() - damage));
     }
+    isDead(){
+        return this._hp <= 0
+    }
+
 }
 export {Entity}

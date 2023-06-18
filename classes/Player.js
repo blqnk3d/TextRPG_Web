@@ -1,14 +1,16 @@
 import {Entity} from "./Entity.js";
 
-class Player extends Entity{
+class Player extends Entity {
     buffs = []
     debuffs = []
-    constructor(name,hp,maxHP,defence,attack,image) {
-        super(name,hp,maxHP,defence,attack,image);
+
+    constructor(name, image = "") {
+        super(name, 100, 100, 3, 3, image);
         this._coins = 0
         this._exp = 0
-        this._lvl = 0
-        this._maxLvL = 0
+        this._maxEXP = 100
+        this._lvl = 1
+        this._maxLvL = 100
     }
 
     getcoins() {
@@ -41,6 +43,24 @@ class Player extends Entity{
 
     setmaxLvL(value) {
         this._maxLvL = value;
+    }
+
+    getStats() {
+        return {
+            hp: this._hp,
+            defence: this._defence,
+            attack: this._attack,
+            coins: this._coins,
+            exp: this._exp
+
+        }
+    }
+    levelUp(){
+        if (this._exp >= this._maxEXP){
+            this._exp -= this._maxEXP;
+            this._lvl += 1
+            this._maxEXP *= 1.2
+        }
     }
 }
 

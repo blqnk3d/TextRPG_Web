@@ -1,17 +1,22 @@
 html, body {
     height: 100%;
-    font-size: xx-large;
-    background-color: #2B2B2B;
-    color: white;
+    background-color: #000;
+    color: #F4F4F6;
+    font-size: 1.9vw;
 }
 
 .parent {
     display: grid;
     grid-template-columns: repeat(41, 1fr);
     grid-template-rows: repeat(36, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
     height: 90%;
+}
+.div1,.div2,.div3,.div4,.div5,.div6,.div7,.div8{
+    text-align: center;
+    font-size: 1rem;
+    background-color: #2B2B2B;
 }
 
 .div1 {
@@ -21,6 +26,9 @@ html, body {
 
 .div2 {
     grid-area: 8 / 1 / 24 / 5;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
 .div3 {
@@ -29,6 +37,7 @@ html, body {
 
 .div4 {
     grid-area: 1 / 5 / 5 / 38;
+    display: flex;
 }
 
 .div5 {
@@ -47,10 +56,7 @@ html, body {
 }
 
 
-.div1,.div2,.div3,.div4,.div5,.div6,.div7,.div8{
-    text-align: center;
-    font-size: 1rem;
-}
+
 
 .hidden{
     visibility: hidden;
@@ -62,8 +68,38 @@ html, body {
     right:0;
 }
 #nameContainer{
+    border: black solid 0px;
     position:relative;
-    top:80%;
-    background-color: gray;
-    color: white;
+    top: 13vh;
+    background-color: #666667;
+    border-radius: 15px;
+    font-size: 1.9vw;
 }
+
+.enemyButtons{
+    height: 2vh;
+    width: 1vh;
+;
+}
+.statsContainer{
+    text-align: left;
+    display: flex;
+    font-size: 1.9vw;
+}
+
+.styleButtonListButton{
+border: black solid 0px;
+    border-radius: 5px;
+    width: 1fr;
+    margin: 2px;
+}
+
+button{
+    background-color: #666667;
+    color: #F4F4F6;
+}
+
+.image{
+    max-height:100%; max-width:100%;
+}
+
