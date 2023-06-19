@@ -2,8 +2,8 @@ import {Entity} from "./Entity.js";
 
 class Enemy extends Entity {
 
-    constructor(name, hp, maxHP, defence, attack, image, coinsDropped, expDropped, items) {
-        super(name, hp, maxHP, defence, attack, image);
+    constructor(name, hp, defence, attack, image, coinsDropped, expDropped, items) {
+        super(name, hp, hp, defence, attack, image);
         this._coinsDropped = coinsDropped;
         this._expDropped = expDropped;
         this._items = items;

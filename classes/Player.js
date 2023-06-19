@@ -28,6 +28,9 @@ class Player extends Entity {
     setexp(value) {
         this._exp = value;
     }
+    getMaxEXP(){
+        return this._maxEXP
+    }
 
     getlvl() {
         return this._lvl;
@@ -60,6 +63,9 @@ class Player extends Entity {
             this._exp -= this._maxEXP;
             this._lvl += 1
             this._maxEXP *= 1.2
+            super.sethp(super.getMaxHP())
+            super.setattack(super.getattack()+2)
+            super.setdefence(super.getdefence()+2)
         }
     }
 }

@@ -42,6 +42,7 @@ html, body {
 
 .div5 {
     grid-area: 5 / 5 / 37 / 38;
+    display: flex;
 }
 
 .div6 {
@@ -90,7 +91,8 @@ html, body {
 .styleButtonListButton{
 border: black solid 0px;
     border-radius: 5px;
-    width: 1fr;
+    width: 180px;
+    height: 100%;
     margin: 2px;
 }
 
@@ -103,3 +105,21 @@ button{
     max-height:100%; max-width:100%;
 }
 
+.statsContainerHP{
+    background-color: green;
+    border: black solid 0px;
+    border-radius: 5px;
+}
+
+
+.levelBar{
+    background-color: darkslategray;
+    border: black solid 0px;
+    border-radius: 5px;
+}
+
+.playerFieldForAnimation,.enemyFieldForAnimation{
+    width: 50%;
+    height: 100%;
+    display: inline;
+}

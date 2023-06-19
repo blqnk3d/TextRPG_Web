@@ -9,6 +9,10 @@ class Entity {
         this._attack = attack;
     }
 
+    getMaxHP(){
+        return this.maxHP
+    }
+
     getname() {
         return this._name;
     }
@@ -22,7 +26,7 @@ class Entity {
     }
 
     sethp(value) {
-        this._hp = value;
+        this._hp = Math.max(value,0);
     }
 
     getdefence() {
