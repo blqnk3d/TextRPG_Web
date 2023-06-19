@@ -13,7 +13,8 @@ html, body {
     grid-row-gap: 5px;
     height: 90%;
 }
-.div1,.div2,.div3,.div4,.div5,.div6,.div7,.div8{
+
+.div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8 {
     text-align: center;
     font-size: 1rem;
     background-color: #2B2B2B;
@@ -43,6 +44,8 @@ html, body {
 .div5 {
     grid-area: 5 / 5 / 37 / 38;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .div6 {
@@ -52,74 +55,84 @@ html, body {
 .div7 {
     grid-area: 21 / 38 / 37 / 42;
 }
-.div8{
+
+.div8 {
     grid-area: 19 / 38 / 21 / 42;
 }
 
 
-
-
-.hidden{
+.hidden {
     visibility: hidden;
 }
 
-#lvlContainer{
-    position:absolute;
-    top:0;
-    right:0;
+#lvlContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-#nameContainer{
+
+#nameContainer {
     border: black solid 0px;
-    position:relative;
+    position: relative;
     top: 13vh;
     background-color: #666667;
     border-radius: 15px;
     font-size: 1.9vw;
 }
 
-.enemyButtons{
+.enemyButtons {
     height: 2vh;
-    width: 1vh;
-;
+    width: 2vh;
+
 }
-.statsContainer{
+
+.enemyContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.statsContainer {
     text-align: left;
     display: flex;
     font-size: 1.9vw;
 }
 
-.styleButtonListButton{
-border: black solid 0px;
+.styleButtonListButton {
+    border: black solid 0px;
     border-radius: 5px;
     width: 180px;
     height: 100%;
     margin: 2px;
 }
 
-button{
+button {
     background-color: #666667;
     color: #F4F4F6;
 }
 
-.image{
-    max-height:100%; max-width:100%;
+.image {
+    max-height: 100%;
+    max-width: 100%;
 }
 
-.statsContainerHP{
+.statsContainerHP {
     background-color: green;
     border: black solid 0px;
     border-radius: 5px;
 }
 
 
-.levelBar{
+.levelBar {
     background-color: darkslategray;
     border: black solid 0px;
     border-radius: 5px;
 }
 
-.playerFieldForAnimation,.enemyFieldForAnimation{
+.playerFieldForAnimation, .enemyFieldForAnimation {
     width: 50%;
     height: 100%;
     display: inline;
 }
+
