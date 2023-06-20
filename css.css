@@ -23,6 +23,8 @@ html, body {
 .div1 {
     grid-area: 1 / 1 / 8 / 5;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .div2 {
@@ -73,11 +75,11 @@ html, body {
 
 #nameContainer {
     border: black solid 0px;
-    position: relative;
-    top: 13vh;
+    position: absolute;
+    bottom: 0px;
     background-color: #666667;
-    border-radius: 15px;
-    font-size: 1.9vw;
+    border-radius: 10px;
+    width: 99%;
 }
 
 .enemyButtons {
@@ -96,13 +98,12 @@ html, body {
 .statsContainer {
     text-align: left;
     display: flex;
-    font-size: 1.9vw;
 }
 
 .styleButtonListButton {
     border: black solid 0px;
     border-radius: 5px;
-    width: 180px;
+    width: 50%;
     height: 100%;
     margin: 2px;
 }

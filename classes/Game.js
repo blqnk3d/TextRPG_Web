@@ -21,7 +21,7 @@ const enemyList = {
 //TODO <div class='playerFieldForAnimation'></div> <div class='enemyFieldForAnimation'></div>
 
 let update = null
-
+let chooseListOpen = false
 class Game {
 
     constructor(enemys) {
@@ -50,6 +50,9 @@ class Game {
 
         lvlContainer.innerHTML = this.player.getlvl()
         lvlContainer.id = "lvlContainer"
+        let levelTag = document.createElement("div")
+        levelTag.innerText = "level"
+        allLevelStuff.appendChild(levelTag)
         allLevelStuff.appendChild(lvlContainer)
         playerPicAndLevel.appendChild(allLevelStuff)
         // }
@@ -67,12 +70,16 @@ class Game {
                 statsField.appendChild(statContainer)
             }
         }
+
+
         this.player.levelUp()
         createButtonsForHotbar()
         this.drawHPBar()
+        return null
     }
 
     chooseEnemy() {
+        if (chooseListOpen ) return
         for (const gameEneyms in game.enemys) {
             let soloEnemyContainer = document.createElement("div")
             soloEnemyContainer.className = "enemyContainer"
@@ -88,6 +95,7 @@ class Game {
             soloEnemyContainer.appendChild(chooseButton)
             mainField.appendChild(soloEnemyContainer)
         }
+        chooseListOpen = true
     }
 
     fight(enemy) {
@@ -110,6 +118,7 @@ class Game {
             this.player.setcoins(this.player.getcoins() + enemy.getcoinsDropped())
             this.player.setexp(this.player.getexp() + enemy.getexpDropped())
         }
+        chooseListOpen = false
     }
 
     shop() {
@@ -123,7 +132,6 @@ class Game {
     drawHPBar() {
         let currentBar = document.getElementsByClassName("statsContainerHP")[0]
         let hpProcent = Math.round(this.player.gethp() / (this.player.getMaxHP() / 100))
-        console.log(hpProcent)
         currentBar.style.width = `${hpProcent}%`
     }
 
