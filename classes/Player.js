@@ -7,7 +7,7 @@ class Player extends Entity {
     constructor(name, image = "") {
         super(name, 100, 100, 3, 3, image);
         this._coins = 0
-        this._exp = 0
+        this._exp = 100
         this._maxEXP = 100
         this._lvl = 1
         this._maxLvL = 100
@@ -63,6 +63,7 @@ class Player extends Entity {
             this._exp -= this._maxEXP;
             this._lvl += 1
             this._maxEXP *= 1.2
+            super.setMaxHP(super.getMaxHP()+5)
             super.sethp(super.getMaxHP())
             super.setattack(super.getattack()+2)
             super.setdefence(super.getdefence()+2)

@@ -1,5 +1,6 @@
 import {Player} from "./Player.js";
 import {Enemy} from "./Enemy.js";
+import {Shop} from "./Items/Shop.js";
 
 const playerPicAndLevel = document.getElementsByClassName("div1")[0]
 const statsField = document.getElementsByClassName("div2")[0]
@@ -18,12 +19,13 @@ const enemyList = {
     Werewolf: new Enemy("Werewolf", 45, 45, 12, 22, "", 3, 3, null)
 };
 
+
 //TODO <div class='playerFieldForAnimation'></div> <div class='enemyFieldForAnimation'></div>
 
 let update = null
 let chooseListOpen = false
 class Game {
-
+    shop = new Shop()
     constructor(enemys) {
         this.enemys = enemys
         this.player = new Player("")
@@ -121,12 +123,29 @@ class Game {
         chooseListOpen = false
     }
 
-    shop() {
-        alert("WIP")
+    shopOpen() {
+        let shopDiv = document.createElement("div")
+        shopDiv.className = "shopContainer"
+        let shopItems = game.shop.items
+        for (const shopItemsKey in shopItems) {
+            let shopItemContainer = document.createElement("div")
+            shopItemContainer.className = "shopItemContainer"
+            let itemButtonChoose = document.createElement("button")
+            itemButtonChoose.value = shopItemsKey
+            itemButtonChoose.innerText = shopItemsKey
+            itemButtonChoose.className = "shopButton"
+            itemButtonChoose.addEventListener("click",ev=>{
+                let itemBought = game.shop.buy(ev.target.value)
+                //TODO Inventory add Item
+            })
+            shopItemContainer.appendChild(itemButtonChoose)
+            shopDiv.appendChild(shopItemContainer)
+        }
+        mainField.appendChild(shopDiv)
     }
 
     gameOver() {
-
+        alert("TODO")
     }
 
     drawHPBar() {
@@ -140,6 +159,15 @@ class Game {
 let input = document.getElementById("pName")
 input.addEventListener("keyup", ev => {
     if (ev.key === "Enter") {
+        input.value = input.value.replaceAll(/[^a-zA-Z]/gm,"")
+        if (input.value.length >= 8 ) {
+            input.value = ""
+            alert("The is to Long [Max Length: 7]\nPlease Enter it again")
+            return
+        }else if (input.value.length === 0 ){
+            alert("Invalid")
+            return
+        }
         game.player.setname(input.value)
         document.getElementById("del").parentElement.removeChild(document.getElementById("del"))
         document.getElementsByClassName("parent")[0].className = "parent"
@@ -180,7 +208,7 @@ function createButtonsForHotbar() {
     let shopButton = document.createElement("button")
     shopButton.innerHTML = "Shop"
     shopButton.className = "styleButtonListButton"
-    shopButton.addEventListener("click", game.shop)
+    shopButton.addEventListener("click", game.shopOpen)
     shopButton.style.width = "1fr"
     buttonField.appendChild(shopButton)
 }

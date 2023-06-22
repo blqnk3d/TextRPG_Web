@@ -49,6 +49,9 @@ class Entity {
         let damage = c * attack / (c + this._defence);
         this.sethp(Math.round(this.gethp() - damage));
     }
+    setMaxHP(value){
+        this.maxHP = value
+    }
     isDead(){
         return this._hp <= 0
     }

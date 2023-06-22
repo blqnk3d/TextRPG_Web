@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-
-
+   <!-- Inventory Classes -->
+    <script defer type="module" src="classes/Items/Item.js"></script>
+    <script defer type="module" src="classes/Items/ShopItem.js"></script>
+    <script defer type="module" src="classes/Items/MobDroppItem.js"></script>
+    <!-- Entity Classes -->
     <script defer type="module" src="classes/Entity.js"></script>
     <script defer type="module" src="classes/Player.js"></script>
     <script defer type="module" src="classes/Enemy.js"></script>
+    <!-- Main Game -->
     <script defer type="module" src="classes/Game.js"></script>
     <link rel="stylesheet" href="css.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Game</title>
 </head>
 <body>
 <div id = "del">
@@ -28,5 +30,6 @@
     <div class="div8">Inventory</div>
 </div>
 <input type="checkbox" name="toggle colors" id = "tColors">
+<button id = "debug">DEBUG</button>
 </body>
 </html>
