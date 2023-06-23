@@ -22,7 +22,7 @@ const enemyList = {
 
 //TODO <div class='playerFieldForAnimation'></div> <div class='enemyFieldForAnimation'></div>
 
-let update = null
+let updateCheck = null
 let chooseListOpen = false
 class Game {
     shop = new Shop()
@@ -77,11 +77,12 @@ class Game {
         this.player.levelUp()
         createButtonsForHotbar()
         this.drawHPBar()
+        this.updateBar()
         return null
     }
 
     chooseEnemy() {
-        if (chooseListOpen ) return
+        game.update()
         for (const gameEneyms in game.enemys) {
             let soloEnemyContainer = document.createElement("div")
             soloEnemyContainer.className = "enemyContainer"
@@ -97,7 +98,18 @@ class Game {
             soloEnemyContainer.appendChild(chooseButton)
             mainField.appendChild(soloEnemyContainer)
         }
-        chooseListOpen = true
+    }
+
+    updateBar(){
+        // ToDo Fix
+        return
+        let buttons = document.getElementsByClassName("styleButtonListButton")
+        console.log(buttons)
+        let len = buttons.length
+        for (const buttonsKey in buttons) {
+            buttons[buttonsKey].style.width = `${100 / len}`
+            console.log(buttons[buttonsKey].style.width)
+        }
     }
 
     fight(enemy) {
@@ -120,10 +132,10 @@ class Game {
             this.player.setcoins(this.player.getcoins() + enemy.getcoinsDropped())
             this.player.setexp(this.player.getexp() + enemy.getexpDropped())
         }
-        chooseListOpen = false
     }
 
     shopOpen() {
+        game.update()
         let shopDiv = document.createElement("div")
         shopDiv.className = "shopContainer"
         let shopItems = game.shop.items
@@ -171,8 +183,8 @@ input.addEventListener("keyup", ev => {
         game.player.setname(input.value)
         document.getElementById("del").parentElement.removeChild(document.getElementById("del"))
         document.getElementsByClassName("parent")[0].className = "parent"
-        if (update == null) {
-            update = setInterval(game.update(), 100)
+        if (updateCheck == null) {
+            updateCheck = setInterval(game.update(), 100)
         }
     }
 })
@@ -212,5 +224,9 @@ function createButtonsForHotbar() {
     shopButton.style.width = "1fr"
     buttonField.appendChild(shopButton)
 }
-
 let game = new Game(enemyList)
+document.getElementById("debug").addEventListener("click",()=>{
+})
+document.getElementById("clear").addEventListener("click",()=>{
+    mainField.innerHTML=""
+})
