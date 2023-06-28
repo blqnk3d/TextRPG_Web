@@ -1,6 +1,7 @@
 import {Player} from "./Player.js";
 import {Enemy} from "./Enemy.js";
 import {Shop} from "./Items/Shop.js";
+import {Inventory} from "./Inventory.js";
 
 const playerPicAndLevel = document.getElementsByClassName("div1")[0]
 const statsField = document.getElementsByClassName("div2")[0]
@@ -23,9 +24,9 @@ const enemyList = {
 //TODO <div class='playerFieldForAnimation'></div> <div class='enemyFieldForAnimation'></div>
 
 let updateCheck = null
-let chooseListOpen = false
 class Game {
     shop = new Shop()
+    inventory = new Inventory()
     constructor(enemys) {
         this.enemys = enemys
         this.player = new Player("")
@@ -54,8 +55,10 @@ class Game {
         lvlContainer.id = "lvlContainer"
         let levelTag = document.createElement("div")
         levelTag.innerText = "level"
+        levelTag.className = "levelTagContainer"
         allLevelStuff.appendChild(levelTag)
         allLevelStuff.appendChild(lvlContainer)
+        allLevelStuff.className = "levelItems"
         playerPicAndLevel.appendChild(allLevelStuff)
         // }
         let playerStats = this.player.getStats()
@@ -78,6 +81,7 @@ class Game {
         createButtonsForHotbar()
         this.drawHPBar()
         this.updateBar()
+        this.renderInv()
         return null
     }
 
@@ -140,8 +144,6 @@ class Game {
         shopDiv.className = "shopContainer"
         let shopItems = game.shop.items
         for (const shopItemsKey in shopItems) {
-            let shopItemContainer = document.createElement("div")
-            shopItemContainer.className = "shopItemContainer"
             let itemButtonChoose = document.createElement("button")
             itemButtonChoose.value = shopItemsKey
             itemButtonChoose.innerText = shopItemsKey
@@ -150,15 +152,17 @@ class Game {
                 let itemBought = game.shop.buy(ev.target.value)
                 //TODO Inventory add Item
             })
-            shopItemContainer.appendChild(itemButtonChoose)
-            shopDiv.appendChild(shopItemContainer)
+            shopDiv.appendChild(itemButtonChoose)
         }
         mainField.appendChild(shopDiv)
     }
 
     gameOver() {
-        alert("TODO")
+        alert("TODO") // ToDo GameOver Screen
+        // xy . location
+
     }
+
 
     drawHPBar() {
         let currentBar = document.getElementsByClassName("statsContainerHP")[0]
@@ -206,6 +210,9 @@ document.getElementById("tColors").addEventListener("change", checkBox => {
 
 })
 
+function renderInv(){
+// ToDo Rendering of the Inv
+}
 
 function createButtonsForHotbar() {
     buttonField.innerHTML = ""
@@ -223,6 +230,7 @@ function createButtonsForHotbar() {
     shopButton.addEventListener("click", game.shopOpen)
     shopButton.style.width = "1fr"
     buttonField.appendChild(shopButton)
+
 }
 let game = new Game(enemyList)
 document.getElementById("debug").addEventListener("click",()=>{
