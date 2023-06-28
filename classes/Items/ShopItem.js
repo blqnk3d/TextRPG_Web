@@ -6,6 +6,9 @@ class ShopItem extends Item{
         super(name, useType, lore, rarity, lvlReq);
         this.price = price
     }
+    getPrice(){
+        return this.price
+    }
 }
 
 export {ShopItem}

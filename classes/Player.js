@@ -44,8 +44,12 @@ class Player extends Entity {
         return this._maxLvL;
     }
 
+
     setmaxLvL(value) {
         this._maxLvL = value;
+    }
+    setMaxEXP(value){
+        this._maxEXP = value
     }
 
     getStats() {

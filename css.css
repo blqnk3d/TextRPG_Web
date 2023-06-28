@@ -112,6 +112,7 @@ html, body {
     width: 50%;
     height: 100%;
     margin-left: 2px;
+    font-size: 1.9vw;
 }
 
 button {
@@ -147,7 +148,7 @@ button {
 
 .shopButton {
     display: block;
-    height: 3vh;
+    height: 5vh;
 }
 
 .shopItemContainer {
@@ -162,3 +163,7 @@ button {
     flex-wrap: wrap;
 }
 
+.inventoryItem{
+    width: 90%;
+    font-size: 1.9vw;
+}

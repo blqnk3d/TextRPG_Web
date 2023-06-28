@@ -146,11 +146,18 @@ class Game {
         for (const shopItemsKey in shopItems) {
             let itemButtonChoose = document.createElement("button")
             itemButtonChoose.value = shopItemsKey
-            itemButtonChoose.innerText = shopItemsKey
+            itemButtonChoose.innerText = `${shopItemsKey} \n${shopItems[shopItemsKey].price}$`
             itemButtonChoose.className = "shopButton"
             itemButtonChoose.addEventListener("click",ev=>{
+
                 let itemBought = game.shop.buy(ev.target.value)
-                //TODO Inventory add Item
+                if (game.player.getcoins() >= itemBought.price ){
+                    game.inventory.append(itemBought)
+                    game.player.setcoins(game.player.getcoins() - itemBought.price)
+                    game.update()
+                }else {
+                    alert("You dont have enough coins")
+                }
             })
             shopDiv.appendChild(itemButtonChoose)
         }
@@ -169,10 +176,45 @@ class Game {
         let hpProcent = Math.round(this.player.gethp() / (this.player.getMaxHP() / 100))
         currentBar.style.width = `${hpProcent}%`
     }
+    renderInv(){
+        let itemlist = this.inventory.list
+        for (let i = 0; i < itemlist.length; i++) {
+            // i == the Index which to delete
+            let button = document.createElement("button")
+            let item = itemlist[i]
+            button.innerText = item._name
+            button.addEventListener("click",()=>{
+                // ToDo Menu to Use/Delete/Equip
+                // create a Div absolut positon with Clientx - mousex [same w y] and set with style
+            })
+            button.className ="inventoryItem"
+            button.addEventListener("mouseover",mouse=>{
+                console.log(mouse)
+                let desc = item._lore
+                let loreContainer = document.createElement("div")
+                loreContainer.className = "loreContainer"
+                loreContainer.style.position = "absolute"
+                loreContainer.style.left = `${mouse.clientX}px`
+            loreContainer.style.top = `${mouse.clientY}px` // ToDo FIX
+                loreContainer.innerText = desc
+                document.body.appendChild(loreContainer)
+            })
+            button.addEventListener("mouseleave",mouse=>{
+                let allLoreContainers = document.getElementsByClassName("loreContainer")
+                for (const allLoreContainersKey in allLoreContainers) {
+                    let container = allLoreContainers[allLoreContainersKey]
+                    container.parentElement.removeChild(container)
+                    console.log(container)
+                }
+            })
+            inventorySpace.appendChild(button)
+        }
+    }
 
 }
 
 let input = document.getElementById("pName")
+let lableForInput = document.getElementById("lableForPName")
 input.addEventListener("keyup", ev => {
     if (ev.key === "Enter") {
         input.value = input.value.replaceAll(/[^a-zA-Z]/gm,"")
@@ -210,9 +252,7 @@ document.getElementById("tColors").addEventListener("change", checkBox => {
 
 })
 
-function renderInv(){
-// ToDo Rendering of the Inv
-}
+
 
 function createButtonsForHotbar() {
     buttonField.innerHTML = ""
@@ -232,9 +272,40 @@ function createButtonsForHotbar() {
     buttonField.appendChild(shopButton)
 
 }
+
 let game = new Game(enemyList)
 document.getElementById("debug").addEventListener("click",()=>{
+    console.log(game)
 })
-document.getElementById("clear").addEventListener("click",()=>{
-    mainField.innerHTML=""
-})
+/** /
+window.addEventListener("load", (event) => {
+    let storagePlayer = localStorage.getItem("player")
+    if (storagePlayer === null){
+        input.className =""
+        lableForInput.className = ""
+    }else {
+        let playerFStorage =JSON.parse(storagePlayer)
+        let newPlayer = new Player(playerFStorage._name)
+        newPlayer.setdefence(playerFStorage._defence)
+        newPlayer.setcoins(playerFStorage._coins)
+        newPlayer.setexp(playerFStorage._exp)
+        newPlayer.setMaxEXP(playerFStorage._maxEXP)
+        newPlayer.setmaxLvL(playerFStorage._maxLvL)
+        newPlayer.setlvl(playerFStorage._lvl)
+        newPlayer.sethp(playerFStorage._hp)
+        newPlayer.setMaxHP(playerFStorage.maxHP)
+        newPlayer.setattack(playerFStorage._attack)
+
+        game.player = newPlayer
+
+        document.getElementsByClassName("parent")[0].className = "parent"
+        game.update()
+    }
+
+});
+
+
+window.addEventListener("unload", (event) => {
+    localStorage.setItem("player",JSON.stringify(game.player))
+});
+*/
