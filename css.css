@@ -167,3 +167,8 @@ button {
     width: 90%;
     font-size: 1.9vw;
 }
+.loreContainer{
+    background-color: black;
+    border: black solid 0px;
+    border-radius: 5px;
+}

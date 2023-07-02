@@ -189,15 +189,15 @@ class Game {
             })
             button.className ="inventoryItem"
             button.addEventListener("mouseover",mouse=>{
-                console.log(mouse)
+                game.update()
                 let desc = item._lore
                 let loreContainer = document.createElement("div")
                 loreContainer.className = "loreContainer"
                 loreContainer.style.position = "absolute"
-                loreContainer.style.left = `${mouse.clientX}px`
-            loreContainer.style.top = `${mouse.clientY}px` // ToDo FIX
+                loreContainer.style.left = `${mouse.clientX*0.9}px`
+            loreContainer.style.top = `${mouse.clientY-16*0.9}px` // ToDo FIX
                 loreContainer.innerText = desc
-                document.body.appendChild(loreContainer)
+                mainField.appendChild(loreContainer)
             })
             button.addEventListener("mouseleave",mouse=>{
                 let allLoreContainers = document.getElementsByClassName("loreContainer")
