@@ -1,6 +1,6 @@
 class Entity {
 
-    constructor(name,hp,maxHP,defence,attack,image) {
+    constructor(name, hp, maxHP, defence, attack, image) {
         this.maxHP = maxHP
         this.image = image
         this._name = name;
@@ -9,7 +9,7 @@ class Entity {
         this._attack = attack;
     }
 
-    getMaxHP(){
+    getMaxHP() {
         return this.maxHP
     }
 
@@ -26,7 +26,7 @@ class Entity {
     }
 
     sethp(value) {
-        this._hp = Math.max(value,0);
+        this._hp = Math.max(value, 0);
     }
 
     getdefence() {
@@ -44,17 +44,21 @@ class Entity {
     setattack(value) {
         this._attack = value;
     }
-    getAttacked(attack){
+
+    getAttacked(attack) {
         let c = 100; // Constante
         let damage = c * attack / (c + this._defence);
         this.sethp(Math.round(this.gethp() - damage));
     }
-    setMaxHP(value){
+
+    setMaxHP(value) {
         this.maxHP = value
     }
-    isDead(){
+
+    isDead() {
         return this._hp <= 0
     }
 
 }
+
 export {Entity}

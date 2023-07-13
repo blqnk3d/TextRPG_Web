@@ -33,7 +33,8 @@ class Enemy extends Entity {
     setitems(value) {
         this._items = value;
     }
-    reset(){
+
+    reset() {
         this._hp = this.save
     }
 }

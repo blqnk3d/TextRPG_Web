@@ -1,15 +1,19 @@
-class Inventory{
-list = []
+class Inventory {
+    list = []
+
     constructor() {
     }
-    append(value){
-    this.list.push(value)
+
+    append(value) {
+        this.list.push(value)
     }
-    delLast(){
-    this.list.pop()
+
+    delLast() {
+        this.list.pop()
     }
-    deleteAt(index){
-        this.list.splice(index,1)
+
+    deleteAt(index) {
+        this.list.splice(index, 1)
     }
 }
 

@@ -1,4 +1,4 @@
-class  Item {
+class Item {
 
     /*
     Name
@@ -7,7 +7,7 @@ class  Item {
     rarity
     LvL req
      */
-    constructor(name,useType,lore,rarity,lvlReq) {
+    constructor(name, useType, lore, rarity, lvlReq) {
         this._name = name;
         this._useType = useType;
         this._lore = lore;
@@ -45,8 +45,18 @@ class  Item {
     }
 
     setlvlReq(value) {
-        this._lvlReq =  Math.max(value,0);
+        this._lvlReq = Math.max(value, 0);
+    }
+
+    use(player) {
+        switch (this._useType) {
+            case  "heal1"  : {
+                player.sethp(Math.min(player.gethp()+5,player.getMaxHP()))
+            }
+        }
+        return player
     }
 
 }
+
 export {Item}

@@ -20,13 +20,14 @@ const enemyList = {
     Werewolf: new Enemy("Werewolf", 45, 45, 12, 22, "", 3, 3, null)
 };
 
-
 //TODO <div class='playerFieldForAnimation'></div> <div class='enemyFieldForAnimation'></div>
 
 let updateCheck = null
+
 class Game {
     shop = new Shop()
     inventory = new Inventory()
+
     constructor(enemys) {
         this.enemys = enemys
         this.player = new Player("")
@@ -104,7 +105,7 @@ class Game {
         }
     }
 
-    updateBar(){
+    updateBar() {
         // ToDo Fix
         return
         let buttons = document.getElementsByClassName("styleButtonListButton")
@@ -148,14 +149,13 @@ class Game {
             itemButtonChoose.value = shopItemsKey
             itemButtonChoose.innerText = `${shopItemsKey} \n${shopItems[shopItemsKey].price}$`
             itemButtonChoose.className = "shopButton"
-            itemButtonChoose.addEventListener("click",ev=>{
-
+            itemButtonChoose.addEventListener("click", ev => {
                 let itemBought = game.shop.buy(ev.target.value)
-                if (game.player.getcoins() >= itemBought.price ){
+                if (game.player.getcoins() >= itemBought.price) {
                     game.inventory.append(itemBought)
                     game.player.setcoins(game.player.getcoins() - itemBought.price)
                     game.update()
-                }else {
+                } else {
                     alert("You dont have enough coins")
                 }
             })
@@ -166,49 +166,52 @@ class Game {
 
     gameOver() {
         alert("TODO") // ToDo GameOver Screen
-        // xy . location
-
     }
-
 
     drawHPBar() {
         let currentBar = document.getElementsByClassName("statsContainerHP")[0]
         let hpProcent = Math.round(this.player.gethp() / (this.player.getMaxHP() / 100))
         currentBar.style.width = `${hpProcent}%`
     }
-    renderInv(){
+
+    renderInv() {
         let itemlist = this.inventory.list
         for (let i = 0; i < itemlist.length; i++) {
             // i == the Index which to delete
             let button = document.createElement("button")
             let item = itemlist[i]
             button.innerText = item._name
-            button.addEventListener("click",()=>{
+            button.addEventListener("click", () => {
                 // ToDo Menu to Use/Delete/Equip
-                // create a Div absolut positon with Clientx - mousex [same w y] and set with style
             })
-            button.className ="inventoryItem"
-            button.addEventListener("mouseover",mouse=>{
+            button.className = "inventoryItem"
+            button.addEventListener("mouseenter", mouse => {
                 game.update()
                 let desc = item._lore
                 let loreContainer = document.createElement("div")
                 loreContainer.className = "loreContainer"
                 loreContainer.style.position = "absolute"
-                loreContainer.style.left = `${mouse.clientX*0.9}px`
-            loreContainer.style.top = `${mouse.clientY-16*0.9}px` // ToDo FIX
                 loreContainer.innerText = desc
+
                 mainField.appendChild(loreContainer)
+                let lorecontainerWidth = document.getElementsByClassName("loreContainer")
+                lorecontainerWidth[0].style.left = `${mouse.clientX - lorecontainerWidth[0].offsetWidth - 1}px`
+                lorecontainerWidth[0].style.top = `${mouse.clientY - lorecontainerWidth[0].offsetHeight - 1}px`
             })
-            button.addEventListener("mouseleave",mouse=>{
+            button.addEventListener("mouseleave", mouse => {
+                /*
                 let allLoreContainers = document.getElementsByClassName("loreContainer")
-                for (const allLoreContainersKey in allLoreContainers) {
-                    let container = allLoreContainers[allLoreContainersKey]
+                for (const allLoreContloreContainerainersKey in allLoreContainers) {
+                    let container = allLoreContainers[allLoreContloreContainerainersKey]
                     container.parentElement.removeChild(container)
                     console.log(container)
-                }
+                }*/
             })
             inventorySpace.appendChild(button)
         }
+    }
+    deleteItem(index){
+
     }
 
 }
@@ -217,12 +220,12 @@ let input = document.getElementById("pName")
 let lableForInput = document.getElementById("lableForPName")
 input.addEventListener("keyup", ev => {
     if (ev.key === "Enter") {
-        input.value = input.value.replaceAll(/[^a-zA-Z]/gm,"")
-        if (input.value.length >= 8 ) {
+        input.value = input.value.replaceAll(/[^a-zA-Z]/gm, "")
+        if (input.value.length >= 8) {
             input.value = ""
             alert("The is to Long [Max Length: 7]\nPlease Enter it again")
             return
-        }else if (input.value.length === 0 ){
+        } else if (input.value.length === 0) {
             alert("Invalid")
             return
         }
@@ -253,7 +256,6 @@ document.getElementById("tColors").addEventListener("change", checkBox => {
 })
 
 
-
 function createButtonsForHotbar() {
     buttonField.innerHTML = ""
     let fightButton = document.createElement("button")
@@ -274,11 +276,11 @@ function createButtonsForHotbar() {
 }
 
 let game = new Game(enemyList)
-document.getElementById("debug").addEventListener("click",()=>{
+document.getElementById("debug").addEventListener("click", () => {
     console.log(game)
 })
 /** /
-window.addEventListener("load", (event) => {
+ window.addEventListener("load", (event) => {
     let storagePlayer = localStorage.getItem("player")
     if (storagePlayer === null){
         input.className =""
@@ -305,7 +307,7 @@ window.addEventListener("load", (event) => {
 });
 
 
-window.addEventListener("unload", (event) => {
+ window.addEventListener("unload", (event) => {
     localStorage.setItem("player",JSON.stringify(game.player))
 });
-*/
+ */

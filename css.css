@@ -13,6 +13,7 @@ html, body {
     grid-row-gap: 5px;
     height: 90%;
 }
+
 /* Grid Layout Website*/
 .div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8 {
     text-align: center;
@@ -84,9 +85,10 @@ html, body {
     position: absolute;
     bottom: 0px;
     background-color: #666667;
-    border-radius: 0px;  /* To Change*/
+    border-radius: 0px; /* To Change*/
     width: 100%;
 }
+
 .statsContainer {
     text-align: left;
     display: flex;
@@ -124,6 +126,7 @@ button {
     max-height: 100%;
     max-width: 100%;
 }
+
 /* Div 1 / Stats, Icons , Level Container*/
 .statsContainerHP {
     background-color: green;
@@ -137,6 +140,7 @@ button {
     border: black solid 0px;
     border-radius: 5px;
 }
+
 /* TODO  need to implemet it and Get the Gifts */
 .playerFieldForAnimation, .enemyFieldForAnimation {
     width: 50%;
@@ -163,12 +167,13 @@ button {
     flex-wrap: wrap;
 }
 
-.inventoryItem{
+.inventoryItem {
     width: 90%;
     font-size: 1.9vw;
 }
-.loreContainer{
-    background-color: black;
+
+.loreContainer {
+    background-color: #444444;
     border: black solid 0px;
     border-radius: 5px;
 }
