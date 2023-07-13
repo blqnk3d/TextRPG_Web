@@ -14,6 +14,7 @@
 - 2 Container für Animatione wärent gefightet wird erstellen Game File line : 21 
 - Creating the ShopItems and the use cases for them 
 - Menu for the items clicked
+- remove of the Hover text if moved away
 
 ✓ -> gemacht
 / -> versucht / in bearbeitung
